@@ -56,6 +56,8 @@ class ZipAdapter extends AbstractBinaryAdapter
             $builder->add('-r');
         }
 
+        $builder->add('-j');
+
         $builder->add($path);
 
         $collection = $this->manager->handle(getcwd(), $files);
