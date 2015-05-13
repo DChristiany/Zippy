@@ -56,12 +56,12 @@ class ZipAdapter extends AbstractBinaryAdapter
             $builder->add('-r');
         }
 
-        $builder->add('-j');
-
         $builder->add($path);
 
         $collection = $this->manager->handle(getcwd(), $files);
         $builder->setWorkingDirectory($collection->getContext());
+
+        $builder->add('-j');
 
         $collection->forAll(function ($i, Resource $resource) use ($builder) {
             return $builder->add($resource->getTarget());
